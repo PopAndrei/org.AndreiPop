@@ -4,6 +4,7 @@ import ProiectAcreditare.pages.DashboardPage;
 import ProiectAcreditare.pages.HomePage;
 import ProiectAcreditare.pages.LoginPage;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.StepGroup;
 import org.junit.Assert;
 
 public class LogInSteps {
@@ -37,6 +38,14 @@ public class LogInSteps {
     @Step
     public void checkLoggedIn(String user){
        Assert.assertTrue(dashboardPage.checkHelloText(user));
+    }
+
+    @Step
+    public void login(String user, String pass){
+        navigateToHomepage();
+        goToLogin();
+        enterCredentials(user, pass);
+        clickLogin();
     }
 
 }

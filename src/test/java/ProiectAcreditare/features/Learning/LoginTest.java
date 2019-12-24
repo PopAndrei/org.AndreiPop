@@ -1,4 +1,4 @@
-package ProiectAcreditare.features.search;
+package ProiectAcreditare.features.Learning;
 
 import ProiectAcreditare.steps.serenity.LogInSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;

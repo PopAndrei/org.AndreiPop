@@ -1,0 +1,5 @@
+Building simple automation tests -
+In order to get a better understanding of automated tests
+As a tester
+I want to be able to write and create functional web automated tests
+All alone
