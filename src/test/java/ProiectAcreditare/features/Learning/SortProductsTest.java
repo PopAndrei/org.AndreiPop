@@ -36,7 +36,7 @@ public class SortProductsTest {
     @Test
     public void checkSortByPriceFunctionality(){
         logInSteps.navigateToHomepage();
-        sortProductsSteps.searchForProduct("necklace");
+        sortProductsSteps.searchForProduct("neck");
         sortProductsSteps.sortByPrice();
         sortProductsSteps.checkPriceAscending();
     }
