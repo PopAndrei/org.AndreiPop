@@ -5,7 +5,7 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 
-@DefaultUrl("http://testfasttrackit.info/selenium-test/customer/account/login/")
+@DefaultUrl("http://qa5.fasttrackit.org:8008/?page_id=7")
 public class LoginPage extends PageObject {
 
     @FindBy (id = "email")
