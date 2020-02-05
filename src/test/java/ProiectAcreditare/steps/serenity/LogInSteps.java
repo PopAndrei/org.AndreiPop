@@ -1,17 +1,21 @@
 package ProiectAcreditare.steps.serenity;
 
-import ProiectAcreditare.pages.DashboardPage;
+import ProiectAcreditare.pages.DashboardTabPage;
 import ProiectAcreditare.pages.HomePage;
 import ProiectAcreditare.pages.LoginPage;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.annotations.StepGroup;
 import org.junit.Assert;
 
 public class LogInSteps {
 
     private HomePage homePage;
     private LoginPage loginPage;
-    private DashboardPage dashboardPage;
+    private DashboardTabPage dashboardTabPage;
+
+
+    //*
+    //These are the Steps for the "valid login test"
+    //*
 
     @Step
     public void navigateToHomepage(){
@@ -20,8 +24,7 @@ public class LogInSteps {
 
     @Step
     public void goToLogin(){
-        homePage.clickAccountLink();
-        homePage.clickLogInLink();
+        homePage.clickLoginLink();
     }
 
     @Step
@@ -31,21 +34,48 @@ public class LogInSteps {
     }
 
     @Step
-    public void clickLogin(){
-        loginPage.clickloginButton();
+    public void clickLoginButton (){
+        loginPage.clickLoginButton();
     }
 
     @Step
-    public void checkLoggedIn(String user){
-       Assert.assertTrue(dashboardPage.checkHelloText(user));
+    public void checkLoggedIn(String username){
+       Assert.assertTrue(dashboardTabPage.checkHelloUserName(username));
     }
+
+
+    //*
+    //These are the extra Steps for the "Invalid login test"
+    //*
+
+    @Step
+    public void enterInvalidCredentials(String user, String wrongPass){
+        enterCredentials(user,wrongPass);
+    }
+
+    @Step
+    public void checkLoginErrorMessage(String errorMessage){
+        Assert.assertTrue(loginPage.checkLoginErrorMessage(errorMessage));
+    }
+
+    @Step
+    public void checkLostYourPasswordQuestion(String lostPassQuestion){
+        Assert.assertTrue(loginPage.checkLostPasswordError(lostPassQuestion));
+    }
+
+
+    //*
+    //This is the login process in One Step
+    //*
 
     @Step
     public void login(String user, String pass){
         navigateToHomepage();
         goToLogin();
         enterCredentials(user, pass);
-        clickLogin();
+        clickLoginButton();
     }
+
+
 
 }
