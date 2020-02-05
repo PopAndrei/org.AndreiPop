@@ -51,13 +51,14 @@ public class LoginPage extends PageObject {
 
 //  ----- Here I tried to check if the word "ERROR" is visible on the error message,
 //  ----- but I though I would probably learn more if I tried a different approach;
-//  ----- As in trying to check if the error message is visible or not.
+//  ----- As in trying to check if the error message is visible or not. I also added a wait, only for human eye to keep up.
 
 //    public boolean checkLoginErrorMessage (String errorMessage){
 //        return loginErrorMessage.containsOnlyText(errorMessage);
 //    }
 
     public boolean checkLoginErrorMessage(){
+        waitABit(1000);
         return loginErrorMessage.isCurrentlyVisible();
     }
 

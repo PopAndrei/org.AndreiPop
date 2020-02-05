@@ -24,7 +24,7 @@ public class InvalidLoginTest {
         logInSteps.goToLogin();
         logInSteps.enterInvalidCredentials("stan_frostmorn@yahoo.com", "FASTTRACKI");
         logInSteps.clickLoginButton();
-        logInSteps.checkLoginErrorMessage("ERROR");
+        logInSteps.checkIfErrorMessageVisible();
         logInSteps.checkLostYourPasswordQuestion("Lost your password?");
     }
 

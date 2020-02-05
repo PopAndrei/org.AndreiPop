@@ -54,8 +54,8 @@ public class LogInSteps {
     }
 
     @Step
-    public void checkLoginErrorMessage(String errorMessage){
-        Assert.assertTrue(loginPage.checkLoginErrorMessage(errorMessage));
+    public void checkIfErrorMessageVisible(){
+        Assert.assertTrue(loginPage.checkLoginErrorMessage());
     }
 
     @Step
