@@ -4,6 +4,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+import org.openqa.selenium.By;
 
 @DefaultUrl("http://qa5.fasttrackit.org:8008/?page_id=5")
 public class CartPage extends PageObject {
@@ -34,13 +35,26 @@ public class CartPage extends PageObject {
     @FindBy(css = ".product-name [href*='belt']")
     private WebElementFacade product27NameFromCart;
 
+    // I can't seem to find the right CSS for the Price element if this item, in the Cart.
 //    @FindBy (css =  )
 //    private WebElementFacade product27PriceFromCart;
 
+    //*
+    //This is the method I wrote while trying to get the text out of the WebElementFacade.
+    //*
+
     public String product28NameFromCart(){
-        return product28NameFromCart.getText();
+        String product28NamefromCart = product28NameFromCart.findBy(By.cssSelector(".product-name [href*='=cap']")).getText();
+        return product28NamefromCart;
     }
 
+    //*
+    //This is the method for checking the added product name.
+    //*
+
+    public boolean verifyProduct28NameFromCart(String productName){
+        return product28NameFromCart.containsOnlyText(productName);
+    }
 
 
 

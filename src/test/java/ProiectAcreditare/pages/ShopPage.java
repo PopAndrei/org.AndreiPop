@@ -4,6 +4,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+import org.openqa.selenium.By;
 
 @DefaultUrl("http://qa5.fasttrackit.org:8008/?post_type=product")
 public class ShopPage extends PageObject {
@@ -16,10 +17,10 @@ public class ShopPage extends PageObject {
     private WebElementFacade product28;
 
     @FindBy(css = ".post-28 h3")
-    private WebElementFacade prodcut28Name;
+    private WebElementFacade product28Name;
 
     @FindBy(css = ".post-28 .price ins .amount")
-    private WebElementFacade prodcut28Price;
+    private WebElementFacade product28Price;
 
     @FindBy(css = ".post-28 .add_to_cart_button")
     private WebElementFacade product28AddToCartButton;
@@ -31,10 +32,10 @@ public class ShopPage extends PageObject {
     private WebElementFacade product27;
 
     @FindBy(css = ".post-28 h3")
-    private WebElementFacade prodcut27Name;
+    private WebElementFacade product27Name;
 
     @FindBy(css = ".post-27 .price ins .amount")
-    private WebElementFacade prodcut27Price;
+    private WebElementFacade product27Price;
 
     @FindBy(css = ".post-27 .add_to_cart_button")
     private WebElementFacade product27AddToCartButton;
@@ -57,11 +58,12 @@ public class ShopPage extends PageObject {
     }
 
     public String getProduct28Name(){
-        return prodcut28Name.getText();
+        String prod28Name = product28Name.findBy(By.cssSelector(".post-28 h3")).getText();
+        return prod28Name;
     }
 
     public String getProduct28Price(){
-        return prodcut28Price.getText();
+        return product28Price.getValue();
     }
 
     public void clickProduct27AddToCartButton() {
@@ -72,18 +74,18 @@ public class ShopPage extends PageObject {
         clickOn(product27ViewCartButton);
     }
 
-    public String getProduct27Name(){
-        return prodcut27Name.getText();
-    }
-
     public String getProduct27Price (){
-        return prodcut27Price.getText();
+        return product27Price.getValue();
     }
 
+    //*
+    //This is the method for getting the text out of the WebElement - it is not working I think.
+    //*
 
-    //*
-    //These are the methods/asserts that verify or check the elements from the Shop Page
-    //*
+    public String getProduct27Name(){
+        return product27Name.getText();
+    }
+
 
 
 

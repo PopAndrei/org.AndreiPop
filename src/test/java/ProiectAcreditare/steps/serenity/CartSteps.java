@@ -8,14 +8,22 @@ import org.junit.Assert;
 
 public class CartSteps {
 
-    HomePage homePage;
     ShopPage shopPage;
     CartPage cartPage;
 
     @Step
-    public boolean checkCorrectProductAddedToCart(String productFromShop, String productFromCart){
-        productFromShop = shopPage.getProduct28Name();
-        productFromCart = cartPage.product28NameFromCart();
-        Assert.assertEquals(productFromShop, productFromCart);
+    public void checkNameOfProductAddedToCart(){
+       Assert.assertEquals(shopPage.getProduct28Name(), cartPage.product28NameFromCart());
     }
+
+    @Step
+    public void displayNameOfProductAddedToCart(){
+        System.out.println(shopPage.getProduct28Name() + cartPage.product28NameFromCart());
+    }
+
+    @Step
+    public void verifyNameOfAddedProductToCart(String productName){
+        Assert.assertTrue(cartPage.verifyProduct28NameFromCart(productName));
+    }
+
 }

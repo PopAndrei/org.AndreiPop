@@ -17,7 +17,13 @@ public class ShopSteps {
     }
 
     @Step
-    public void addProductToCart() {shopPage.clickProduct28AddToCartButton();
+    public void addOneProductToCart() {shopPage.clickProduct28AddToCartButton();
+    }
+
+    @Step
+    public void addTwoProductsToCart() {
+        shopPage.clickProduct27AddToCartButton();
+        shopPage.clickProduct28AddToCartButton();
     }
 
     @Step
