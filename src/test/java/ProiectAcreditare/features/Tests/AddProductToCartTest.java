@@ -42,8 +42,8 @@ public class AddProductToCartTest {
     }
 
     //*
-    // In the next test I tried to see if I could automatically check/compare the name of the product in the Shop Page
-    // and the (hopefully) same product displayed on the Cart Page.
+    // In the next test I tried to see if I could automatically check/compare the name of added the product
+    // from the Shop Page and the (hopefully) same product displayed on the Cart Page.
     //*
 
     @Test

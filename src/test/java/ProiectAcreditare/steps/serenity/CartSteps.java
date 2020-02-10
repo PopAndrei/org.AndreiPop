@@ -26,4 +26,30 @@ public class CartSteps {
         Assert.assertTrue(cartPage.verifyProduct28NameFromCart(productName));
     }
 
+
+    //*
+    //These are the removing products methods
+    //*
+
+    @Step
+    public void removeOneProductFromCart() {
+        cartPage.clickProduct28RemoveButton();
+    }
+
+    @Step
+    public void removeTwoProductsFromCart(){
+        cartPage.clickProduct28RemoveButton();
+        cartPage.clickProduct27RemoveButton();
+    }
+
+
+    //*
+    //These are the Verifying / Asserting methods
+    //*
+
+    @Step
+    public void checkCartIsEmpty(){
+        Assert.assertTrue(cartPage.checkCartIsEmpty());
+    }
+
 }

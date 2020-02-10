@@ -4,6 +4,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 
 @DefaultUrl("http://qa5.fasttrackit.org:8008/?page_id=5")
@@ -32,8 +33,34 @@ public class CartPage extends PageObject {
     @FindBy (css = ".woocommerce .amount:first-child")
     private WebElementFacade product28PriceFromCart;
 
+    @FindBy(css = ".remove[data-product_id='28']")
+    private WebElementFacade product28RemoveButton;
+
     @FindBy(css = ".product-name [href*='belt']")
     private WebElementFacade product27NameFromCart;
+
+    @FindBy (css = ".remove[data-product_id='27']")
+    private WebElementFacade product27RemoveButton;
+
+
+
+    //*
+    //These are the methods/ interactions with the elements from the Cart Page
+    //*
+
+    public void clickProduct28RemoveButton(){
+        clickOn(product28RemoveButton);
+    }
+
+    public void clickProduct27RemoveButton(){
+        clickOn(product27RemoveButton);
+    }
+
+    public boolean checkCartIsEmpty(){
+        waitABit(350);
+        return emptyCartMessage.isCurrentlyVisible();
+    }
+
 
     // I can't seem to find the right CSS for the Price element if this item, in the Cart.
 //    @FindBy (css =  )

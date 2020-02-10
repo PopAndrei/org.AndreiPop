@@ -28,4 +28,17 @@ public class ShopSteps {
 
     @Step
     public void clickViewCartButton() { shopPage.clickProduct28ViewCartButton();}
+
+
+    //*
+    //This is the adding a product process in One Step + Navigating to the Cart Page
+    //*
+
+    @Step
+    public void navigateAddViewOneProductInCart(){
+        homePage.clickShopNavigationButton();
+        shopPage.clickProduct28AddToCartButton();
+        shopPage.clickProduct28ViewCartButton();
+    }
+
 }
