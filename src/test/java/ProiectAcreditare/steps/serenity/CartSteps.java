@@ -11,14 +11,14 @@ public class CartSteps {
     ShopPage shopPage;
     CartPage cartPage;
 
-    @Step
-    public void checkNameOfProductAddedToCart(){
-       Assert.assertEquals(shopPage.getProduct28Name(), cartPage.product28NameFromCart());
-    }
+
+    //*
+    //These are the Steps for checking the added Products
+    //*
 
     @Step
-    public void displayNameOfProductAddedToCart(){
-        System.out.println(shopPage.getProduct28Name() + cartPage.product28NameFromCart());
+    public void compareNameOfProductAddedToCart(String productNameFromShop){
+       Assert.assertTrue(cartPage.product28NameFromCart().contentEquals(productNameFromShop));
     }
 
     @Step

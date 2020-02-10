@@ -57,11 +57,6 @@ public class ShopPage extends PageObject {
         clickOn(product28ViewCartButton);
     }
 
-    public String getProduct28Name(){
-        String prod28Name = product28Name.findBy(By.cssSelector(".post-28 h3")).getText();
-        return prod28Name;
-    }
-
     public String getProduct28Price(){
         return product28Price.getValue();
     }
@@ -79,11 +74,16 @@ public class ShopPage extends PageObject {
     }
 
     //*
-    //This is the method for getting the text out of the WebElement - it is not working I think.
+    //These are the method for getting the text out of the WebElement - been trying to find a way to make them work
     //*
 
     public String getProduct27Name(){
         return product27Name.getText();
+    }
+
+    public String getProduct28Name(){
+        String prod28Name = product28Name.getText();
+        return prod28Name;
     }
 
 

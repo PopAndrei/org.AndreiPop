@@ -71,8 +71,7 @@ public class CartPage extends PageObject {
     //*
 
     public String product28NameFromCart(){
-        String product28NamefromCart = product28NameFromCart.findBy(By.cssSelector(".product-name [href*='=cap']")).getText();
-        return product28NamefromCart;
+        return product28NameFromCart.getText();
     }
 
     //*

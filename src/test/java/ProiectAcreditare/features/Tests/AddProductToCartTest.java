@@ -51,9 +51,9 @@ public class AddProductToCartTest {
         logInSteps.login("stan_frostmorn@yahoo.com", "fasttracki");
         shopSteps.navigateToShopPage();
         shopSteps.addOneProductToCart();
+        String prod28Name = shopSteps.getNameOfProduct28();
         shopSteps.clickViewCartButton();
-        cartSteps.displayNameOfProductAddedToCart();
-        cartSteps.checkNameOfProductAddedToCart();
+        cartSteps.compareNameOfProductAddedToCart(prod28Name);
     }
 
 }

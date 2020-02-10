@@ -34,7 +34,7 @@ public class AddTwoProductsToCartTest {
     CartSteps cartSteps;
 
     @Test
-    public void addTwoPorductsToCartTest(){
+    public void addTwoProductsToCartTest(){
         logInSteps.login("stan_frostmorn@yahoo.com", "fasttracki");
         shopSteps.addTwoProductsToCart();
         shopSteps.clickViewCartButton();
