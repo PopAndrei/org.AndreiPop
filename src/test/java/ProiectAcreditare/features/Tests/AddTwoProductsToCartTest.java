@@ -37,7 +37,10 @@ public class AddTwoProductsToCartTest {
     public void addTwoProductsToCartTest(){
         logInSteps.login("stan_frostmorn@yahoo.com", "fasttracki");
         shopSteps.addTwoProductsToCart();
+        String prod28 = shopSteps.getNameOfProduct28();
+        String prod27 = shopSteps.getNameOfProduct27();
         shopSteps.clickViewCartButton();
+        cartSteps.compareNamesOfTwoProductsAddedToCart(prod28,prod27);
 
     }
 

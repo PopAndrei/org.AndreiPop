@@ -66,12 +66,13 @@ public class CartPage extends PageObject {
 //    @FindBy (css =  )
 //    private WebElementFacade product27PriceFromCart;
 
-    //*
-    //This is the method I wrote while trying to get the text out of the WebElementFacade.
-    //*
 
     public String product28NameFromCart(){
         return product28NameFromCart.getText();
+    }
+
+    public String product27NameFromCart(){
+        return product27NameFromCart.getText();
     }
 
     //*

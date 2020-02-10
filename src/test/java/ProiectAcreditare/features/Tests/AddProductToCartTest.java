@@ -47,7 +47,7 @@ public class AddProductToCartTest {
     //*
 
     @Test
-    public void displayProductNames(){
+    public void addAndCheckProductToCartTest(){
         logInSteps.login("stan_frostmorn@yahoo.com", "fasttracki");
         shopSteps.navigateToShopPage();
         shopSteps.addOneProductToCart();

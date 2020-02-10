@@ -22,6 +22,13 @@ public class CartSteps {
     }
 
     @Step
+    public void compareNamesOfTwoProductsAddedToCart(String product28Name, String product27Name){
+        Assert.assertTrue(cartPage.product28NameFromCart().contentEquals(product28Name)
+                &&
+                cartPage.product27NameFromCart().contentEquals(product27Name));
+    }
+
+    @Step
     public void verifyNameOfAddedProductToCart(String productName){
         Assert.assertTrue(cartPage.verifyProduct28NameFromCart(productName));
     }

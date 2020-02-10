@@ -32,6 +32,7 @@ public class ShopSteps {
 
     @Step
     public void addTwoProductsToCart() {
+        homePage.clickShopNavigationButton();
         shopPage.clickProduct27AddToCartButton();
         shopPage.clickProduct28AddToCartButton();
     }
@@ -54,13 +55,19 @@ public class ShopSteps {
     }
 
     //*
-    //These are the Steps for getting the name of a product
+    //These are the Steps for getting the name of a products
     //*
 
     @Step
     public String getNameOfProduct28(){
         return shopPage.getProduct28Name();
     }
+
+    @Step
+    public String getNameOfProduct27(){
+        return shopPage.getProduct27Name();
+    }
+
 
 
 
