@@ -36,7 +36,7 @@ public class CartPage extends PageObject {
     @FindBy(css = ".remove[data-product_id='28']")
     private WebElementFacade product28RemoveButton;
 
-    @FindBy(css = ".product-name [href*='belt']")
+    @FindBy(css = ".product-name a[href*='belt']")
     private WebElementFacade product27NameFromCart;
 
     @FindBy (css = ".remove[data-product_id='27']")

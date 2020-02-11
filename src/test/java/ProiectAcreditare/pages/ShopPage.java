@@ -31,7 +31,7 @@ public class ShopPage extends PageObject {
     @FindBy(css = ".post-27.product")
     private WebElementFacade product27;
 
-    @FindBy(css = ".post-28 h3")
+    @FindBy(css = ".post-27 h3")
     private WebElementFacade product27Name;
 
     @FindBy(css = ".post-27 .price ins .amount")
