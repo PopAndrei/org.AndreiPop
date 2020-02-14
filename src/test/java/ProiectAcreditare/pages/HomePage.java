@@ -46,6 +46,12 @@ public class HomePage extends PageObject {
     @FindBy (css = ".site-title")
     private WebElementFacade logo;
 
+    @FindBy (css = ".logout")
+    private WebElementFacade logOutButton;
+
+    @FindBy (css = ".entry-title>a")
+    private WebElementFacade logOutMessage;
+
     //*
     //These are the methods for/interactions with the navigation buttons:
     //*
@@ -87,6 +93,14 @@ public class HomePage extends PageObject {
     public void clickLoginLink() { clickOn(loginLink); }
 
     public void clickYourCartLink() { clickOn(yourCartLink); }
+
+    public void clickLogoutButton() {
+        clickOn(logOutButton);
+    }
+
+    public boolean checkLogOutMessage(String text){
+        return logOutMessage.containsOnlyText(text);
+    }
 
 
 

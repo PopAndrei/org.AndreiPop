@@ -53,6 +53,8 @@ public class ShopPage extends PageObject {
         clickOn(product28AddToCartButton);
     }
 
+    public void clickOnProduct28(){clickOn(product28Name);}
+
     public void clickProduct28ViewCartButton() {
         clickOn(product28ViewCartButton);
     }
@@ -64,6 +66,8 @@ public class ShopPage extends PageObject {
     public void clickProduct27AddToCartButton() {
         clickOn(product27AddToCartButton);
     }
+
+    public void clickOnProduct27(){clickOn(product27Name);}
 
     public void clickProduct27ViewCartButton() {
         clickOn(product27ViewCartButton);

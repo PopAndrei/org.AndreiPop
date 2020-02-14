@@ -4,6 +4,7 @@ import ProiectAcreditare.pages.DashboardTabPage;
 import ProiectAcreditare.pages.HomePage;
 import ProiectAcreditare.pages.LoginPage;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
 public class LogInSteps {
@@ -65,6 +66,21 @@ public class LogInSteps {
 
 
     //*
+    //These are the extra Steps for the "LogOut test"
+    //*
+
+    @Step
+    public void clickLogOutButton() {
+        homePage.clickLogoutButton();
+    }
+
+    @Step
+    public void checkDashBoardMessage(String text){
+        Assert.assertTrue(homePage.checkLogOutMessage(text));
+    }
+
+
+    //*
     //This is the login process in One Step
     //*
 
@@ -76,6 +92,14 @@ public class LogInSteps {
         clickLoginButton();
     }
 
+    //*
+    //These are other Steps
+    //*
+
+    @Step
+    public void clickLogo(){
+        homePage.clickLogo();
+    }
 
 
 }

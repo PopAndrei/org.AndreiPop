@@ -4,6 +4,7 @@ import ProiectAcreditare.pages.HomePage;
 import ProiectAcreditare.pages.LoginPage;
 import ProiectAcreditare.pages.ShopPage;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 
 public class ShopSteps {
 
@@ -36,6 +37,22 @@ public class ShopSteps {
         shopPage.clickProduct27AddToCartButton();
         shopPage.clickProduct28AddToCartButton();
     }
+
+
+    //*
+    //These are the Steps for viewing the products in Product Page
+    //*
+
+    @Step
+    public void clickOnProduct27(){
+        shopPage.clickOnProduct27();
+    }
+
+    @Step
+    public void clickOnProduct28(){
+        shopPage.clickOnProduct28();
+    }
+
 
 
     //*

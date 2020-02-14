@@ -10,10 +10,19 @@ public class CheckoutSteps {
     CheckoutPage checkoutPage;
     ShopPage shopPage;
 
+    //*
+    //This is the Step for getting to the Checkout Page
+    //*
+
     @Step
     public void navigateToCheckoutPage(){
         homePage.clickCheckoutNavigationButton();
     }
+
+
+    //*
+    //These are the Steps for Filling all of the fields and drop downs from the Checkout Page
+    //*
 
     @Step
     public void enterFirstAndLastName(String firstName, String lastName){
@@ -51,6 +60,11 @@ public class CheckoutSteps {
         checkoutPage.fillEmailField(email);
     }
 
+
+    //*
+    //These are the Steps for clicking on buttons
+    //*
+
     @Step
     public void clickOnPlaceOrderButton(){
         checkoutPage.clickOnPlaceOrderButton();
@@ -58,11 +72,42 @@ public class CheckoutSteps {
 
     @Step
     public void checkOrderIsPlaced(String orderIsPlacedText){
-        Assert.assertTrue(checkoutPage.checkOrderIsPlacedText(orderIsPlacedText));
+        Assert.assertTrue(checkoutPage.checkOrderIsPlacedTitle(orderIsPlacedText));
     }
 
     @Step
     public void compareAddedToPlacedOrderProduct(String product28NameFromShop){
         Assert.assertTrue(checkoutPage.product28NameFromOrder().contentEquals(product28NameFromShop));
     }
+
+    @Step
+    public void checkThankYouMessage(String thankYouText){
+        Assert.assertTrue(checkoutPage.checkThankYouMessage(thankYouText));
+    }
+
+
+    //*
+    //This is the filling of the checkoutPage process in ONE SINGLE STEP
+    //*
+
+    @Step
+    public void fillInAllCheckoutFields(){
+        checkoutPage.fillFirstNameField("Andrei");
+        checkoutPage.fillLastNameField("Pop");
+        checkoutPage.setCountryDropdown("Romania");
+        checkoutPage.fillStreetAddressField("Popilor, nr. 56");
+        checkoutPage.fillTownCityField("Cluj-Napoca");
+        checkoutPage.fillPostalCodeField("329003");
+        checkoutPage.fillPhoneField("0751193900");
+        checkoutPage.fillEmailField("stan_frostmorn@yahoo.com");
+
+
+
+
+
+
+    }
+
+
+
 }

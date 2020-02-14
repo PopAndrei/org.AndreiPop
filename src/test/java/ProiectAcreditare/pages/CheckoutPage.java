@@ -1,12 +1,10 @@
 package ProiectAcreditare.pages;
 
-import net.bytebuddy.asm.Advice;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.remote.server.handler.SendKeys;
 
 @DefaultUrl("http://qa5.fasttrackit.org:8008/?page_id=6")
 public class CheckoutPage extends PageObject {
@@ -50,14 +48,17 @@ public class CheckoutPage extends PageObject {
     private WebElementFacade emailField;
 
     //*
-    //These are the elements that are present after the Placing of the Order on the CheckoutPage;
+    //These are the elements that are present AFTER the Placing of the Order on the CheckoutPage;
     //*
 
-    @FindBy(css = ".post-title")
+    @FindBy(css = ".content-inner .post-title")
     private WebElementFacade orderReceivedText;
 
     @FindBy(css = ".product-name a")
     private WebElementFacade product28NameOnOrder;
+
+    @FindBy(css = ".woocommerce-notice.woocommerce-thankyou-order-received")
+    private WebElementFacade thankYouMessage;
 
 
     //*
@@ -111,13 +112,21 @@ public class CheckoutPage extends PageObject {
     //These are the interactions/methods for the Verifying of the Placed Order;
     //*
 
-    public boolean checkOrderIsPlacedText(String orderIsPlacedText){
-        return orderReceivedText.containsOnlyText(orderIsPlacedText);
+    public boolean checkOrderIsPlacedTitle(String text){
+        waitABit(4000);
+        waitFor(orderReceivedText);
+        return orderReceivedText.containsOnlyText(text);
     }
 
     public String product28NameFromOrder(){
         return product28NameOnOrder.getText();
     }
+
+    public boolean checkThankYouMessage(String thankYouText){
+        waitFor(thankYouMessage);
+        return thankYouMessage.containsOnlyText(thankYouText);
+    }
+
 
 
     //*

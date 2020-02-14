@@ -8,33 +8,37 @@ import org.junit.Assert;
 
 public class SortProductsSteps {
 
-    private HomePage homePage;
-    private SearchResultsPage searchResultsPage;
-
-    @Step
-    public void searchForProduct(String text){
-        homePage.setSearchField(text);
-        homePage.clickSearchButton();
-    }
-
-    @Step
-    public void sortByRelevance(){
-        searchResultsPage.selectFromDropdown("Relevance");
-    }
-
-    @Step
-    public void sortByName(){
-        searchResultsPage.selectFromDropdown("Name");
-    }
-
-    @Step
-    public void sortByPrice(){
-        searchResultsPage.selectFromDropdown("Price");
-    }
-
-    @Step
-    public void checkPriceAscending(){
-        Assert.assertTrue(searchResultsPage.checkProductsPrices());
-    }
+    //*
+    //These are the methods and exercises from class
+    //******************************************************************************************************
+//
+//    private HomePage homePage;
+//    private SearchResultsPage searchResultsPage;
+//
+//    @Step
+//    public void searchForProduct(String text){
+//        homePage.setSearchField(text);
+//        homePage.clickSearchButton();
+//    }
+//
+//    @Step
+//    public void sortByRelevance(){
+//        searchResultsPage.selectFromDropdown("Relevance");
+//    }
+//
+//    @Step
+//    public void sortByName(){
+//        searchResultsPage.selectFromDropdown("Name");
+//    }
+//
+//    @Step
+//    public void sortByPrice(){
+//        searchResultsPage.selectFromDropdown("Price");
+//    }
+//
+//    @Step
+//    public void checkPriceAscending(){
+//        Assert.assertTrue(searchResultsPage.checkProductsPrices());
+//    }
 
 }
