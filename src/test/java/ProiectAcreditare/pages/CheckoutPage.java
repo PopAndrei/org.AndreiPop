@@ -1,9 +1,12 @@
 package ProiectAcreditare.pages;
 
+import net.bytebuddy.asm.Advice;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.remote.server.handler.SendKeys;
 
 @DefaultUrl("http://qa5.fasttrackit.org:8008/?page_id=6")
 public class CheckoutPage extends PageObject {
@@ -28,6 +31,9 @@ public class CheckoutPage extends PageObject {
     @FindBy(id = "select2-billing_country-result-tnzp-RO")
     private WebElementFacade countryRomania;
 
+    @FindBy(css = ".select2-results__option.select2-results__option--highlighted")
+    private WebElementFacade countrySearchResult;
+
     @FindBy(id = "billing_address_1")
     private WebElementFacade streetAddressField;
 
@@ -42,6 +48,17 @@ public class CheckoutPage extends PageObject {
 
     @FindBy(id = "billing_email")
     private WebElementFacade emailField;
+
+    //*
+    //These are the elements that are present after the Placing of the Order on the CheckoutPage;
+    //*
+
+    @FindBy(css = ".post-title")
+    private WebElementFacade orderReceivedText;
+
+    @FindBy(css = ".product-name a")
+    private WebElementFacade product28NameOnOrder;
+
 
     //*
     //These are the button elements from the Checkout Page;
@@ -63,10 +80,11 @@ public class CheckoutPage extends PageObject {
         typeInto(lastNameField, lastName);
     }
 
+
     public void setCountryDropdown(String countryName){
         clickOn(countryDropdown);
         typeInto(countryDropdownSearchField, countryName);
-        clickOn(countryRomania);
+        clickOn(countrySearchResult);
     }
 
     public void fillStreetAddressField(String streetAddress){
@@ -90,11 +108,26 @@ public class CheckoutPage extends PageObject {
     }
 
     //*
+    //These are the interactions/methods for the Verifying of the Placed Order;
+    //*
+
+    public boolean checkOrderIsPlacedText(String orderIsPlacedText){
+        return orderReceivedText.containsOnlyText(orderIsPlacedText);
+    }
+
+    public String product28NameFromOrder(){
+        return product28NameOnOrder.getText();
+    }
+
+
+    //*
     //These are the interactions/methods with the button elements from the Checkout Page;
     //*
 
     public void clickOnPlaceOrderButton(){
         clickOn(placeOrderButton);
     }
+
+
 
 }
