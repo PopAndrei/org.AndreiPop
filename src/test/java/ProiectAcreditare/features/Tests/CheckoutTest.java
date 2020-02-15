@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(SerenityRunner.class)
-public class VerifiedCheckoutTest {
+public class CheckoutTest {
 
     @Managed(uniqueSession = true)
     private WebDriver driver;
@@ -34,20 +34,43 @@ public class VerifiedCheckoutTest {
     @Steps
     CheckoutSteps checkoutSteps;
 
+    private String email = "stan_frostmorn@yahoo.com";
+    private String pass = "fasttracki";
+
+    private String firstName = "Andrei";
+    private String lastName = "Pop";
+    private String country = "Romania";
+    private String street = "Str. Popilor, nr. 56";
+    private String city = "Cluj-Napoca";
+    private String zipcode = "400398";
+    private String phoneNumber = "0751193900";
+
+    @Test
+    public void simpleCheckoutTest(){
+        logInSteps.login(email,pass);
+        shopSteps.navigateToShopPage();
+        shopSteps.addOneProductToCart();
+        checkoutSteps.navigateToCheckoutPage();
+        checkoutSteps.fillInAllCheckoutFields();
+        checkoutSteps.clickOnPlaceOrderButton();
+
+    }
+
+
     @Test
     public void verifyAddedProductCheckoutTest(){
-        logInSteps.login("stan_frostmorn@yahoo.com","fasttracki");
+        logInSteps.login(email,pass);
         shopSteps.navigateToShopPage();
         String prod28Name = shopSteps.getNameOfProduct28();
         shopSteps.addOneProductToCart();
         checkoutSteps.navigateToCheckoutPage();
-        checkoutSteps.enterFirstAndLastName("Andrei", "Pop");
-        checkoutSteps.selectCountry("Romania");
-        checkoutSteps.enterStreetAddress("Popilor, nr.56");
-        checkoutSteps.enterTownCity("Cluj-Napoca");
-        checkoutSteps.enterPostZIPCode("400379");
-        checkoutSteps.enterPhoneNumber("0751193900");
-        checkoutSteps.enterEmail("stan_frostmorn@yahoo.com");
+        checkoutSteps.enterFirstAndLastName(firstName, lastName);
+        checkoutSteps.selectCountry(country);
+        checkoutSteps.enterStreetAddress(street);
+        checkoutSteps.enterTownCity(city);
+        checkoutSteps.enterPostZIPCode(zipcode);
+        checkoutSteps.enterPhoneNumber(phoneNumber);
+        checkoutSteps.enterEmail(email);
         checkoutSteps.clickOnPlaceOrderButton();
         checkoutSteps.checkOrderIsPlaced("ORDER RECEIVED");
         checkoutSteps.checkThankYouMessage("Thank you. Your order has been received.");

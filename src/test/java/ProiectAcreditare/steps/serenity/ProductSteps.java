@@ -9,9 +9,9 @@ import org.junit.Assert;
 
 public class ProductSteps {
 
-    LoginPage loginPage;
-    ShopPage shopPage;
-    ProductPage productPage;
+    private LoginPage loginPage;
+    private ShopPage shopPage;
+    private ProductPage productPage;
 
 
     //*

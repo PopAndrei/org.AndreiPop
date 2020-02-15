@@ -6,6 +6,8 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.By;
 
+import java.util.List;
+
 @DefaultUrl("http://qa5.fasttrackit.org:8008/?post_type=product")
 public class ShopPage extends PageObject {
 
@@ -43,6 +45,14 @@ public class ShopPage extends PageObject {
     @FindBy(css = ".post-27 .added_to_cart")
     private WebElementFacade product27ViewCartButton;
 
+    @FindBy(css = "select.orderby")
+    private WebElementFacade sortDropdown;
+
+    @FindBy(css = "select.orderby option[value='price']")
+    private WebElementFacade sortByPriceLowToHighOption;
+
+    @FindBy(css = ".price .amount")
+    private List<WebElementFacade> listOfPrices;
 
 
     //*
@@ -77,6 +87,14 @@ public class ShopPage extends PageObject {
         return product27Price.getValue();
     }
 
+    public void clickOnSortDropdown(){
+        clickOn(sortDropdown);
+    }
+
+    public void selectSortByPriceLowToHigh(){
+        clickOn(sortByPriceLowToHighOption);
+    }
+
     //*
     //These are the method for getting the text out of the WebElement - been trying to find a way to make them work
     //*
@@ -89,6 +107,29 @@ public class ShopPage extends PageObject {
         String prod28Name = product28Name.getText();
         return prod28Name;
     }
+
+
+    //*
+    //These are the methods for the checking of the sort by feature/ checking of the prices
+    //*
+
+    public boolean checkPricesOrderedLowToHigh(){
+
+        String firstPrice = listOfPrices.get(0).getText().replace("lei","").replace(".00","").trim();
+        int lowPrice = Integer.parseInt(firstPrice);
+
+        String lastPrice = listOfPrices.get(listOfPrices.size()-1).getText().replace("lei","").replace(".00", "").trim();
+        int highPrice = Integer.parseInt(lastPrice);
+
+        if(lowPrice > highPrice){
+            return false;
+        }
+
+        else return true;
+
+    }
+
+
 
 
 

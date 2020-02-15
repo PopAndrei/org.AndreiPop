@@ -1,6 +1,7 @@
 package ProiectAcreditare.features.Tests;
 
-import ProiectAcreditare.steps.serenity.CartSteps;
+import ProiectAcreditare.pages.HomePage;
+import ProiectAcreditare.steps.serenity.HomepageSteps;
 import ProiectAcreditare.steps.serenity.LogInSteps;
 import ProiectAcreditare.steps.serenity.ShopSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
@@ -12,33 +13,30 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(SerenityRunner.class)
-public class RemoveProductFromCartTest {
+public class SortProductsTest {
 
     @Managed(uniqueSession = true)
     private WebDriver driver;
 
     @Before
-    public void maximizeWindow(){
-        driver.manage()
-                .window()
-                .maximize();
+    public void maxwin(){
+        driver.manage().window().maximize();
     }
 
     @Steps
-    LogInSteps logInSteps;
+    HomepageSteps homepageSteps;
 
     @Steps
     ShopSteps shopSteps;
 
-    @Steps
-    CartSteps cartSteps;
 
     @Test
-    public void removeProductFromCartTest(){
-        logInSteps.login("stan_frostmorn@yahoo.com","fasttracki");
-        shopSteps.navigateAddViewOneProductInCart();
-        cartSteps.removeOneProductFromCart();
-        cartSteps.checkCartIsEmpty();
+    public void sortProductsByPriceLow2HighTest(){
+        homepageSteps.navigateToHomepage();
+        homepageSteps.clickOnShopMenuButton();
+        shopSteps.clickOnSortDropdown();
+        shopSteps.selectSortProductByPriceLow2High();
+        shopSteps.checkPricesOrderedLowToHigh();
     }
 
 }

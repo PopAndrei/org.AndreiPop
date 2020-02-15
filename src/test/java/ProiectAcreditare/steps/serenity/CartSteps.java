@@ -8,8 +8,8 @@ import org.junit.Assert;
 
 public class CartSteps {
 
-    ShopPage shopPage;
-    CartPage cartPage;
+    private ShopPage shopPage;
+    private CartPage cartPage;
 
 
     //*

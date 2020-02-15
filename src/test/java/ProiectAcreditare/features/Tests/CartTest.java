@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(SerenityRunner.class)
-public class AddProductToCartTest {
+public class CartTest {
 
     @Managed(uniqueSession = true)
     private WebDriver driver;
@@ -31,10 +31,13 @@ public class AddProductToCartTest {
     @Steps
     CartSteps cartSteps;
 
+    private String email = "stan_frostmorn@yahoo.com";
+    private String pass = "fasttracki";
+
     @Test
     public void addProductToCartTest(){
 
-        logInSteps.login("stan_frostmorn@yahoo.com", "fasttracki");
+        logInSteps.login(email, pass);
         shopSteps.navigateToShopPage();
         shopSteps.addOneProductToCart();
         shopSteps.clickViewCartButton();
@@ -48,12 +51,36 @@ public class AddProductToCartTest {
 
     @Test
     public void addAndCheckProductToCartTest(){
-        logInSteps.login("stan_frostmorn@yahoo.com", "fasttracki");
+        logInSteps.login(email,pass);
         shopSteps.navigateToShopPage();
         shopSteps.addOneProductToCart();
         String prod28Name = shopSteps.getNameOfProduct28();
         shopSteps.clickViewCartButton();
         cartSteps.compareNameOfProductAddedToCart(prod28Name);
+    }
+
+    @Test
+    public void addTwoProductsToCartTest(){
+        logInSteps.login(email,pass);
+        shopSteps.addTwoProductsToCart();
+        String prod28 = shopSteps.getNameOfProduct28();
+        String prod27 = shopSteps.getNameOfProduct27();
+        shopSteps.clickViewCartButton();
+        cartSteps.compareNamesOfTwoProductsAddedToCart(prod28,prod27);
+
+    }
+
+    //*
+    // These are the tests for Removing Products from cart
+    //*
+
+
+    @Test
+    public void removeProductFromCartTest(){
+        logInSteps.login(email,pass);
+        shopSteps.navigateAddViewOneProductInCart();
+        cartSteps.removeOneProductFromCart();
+        cartSteps.checkCartIsEmpty();
     }
 
 }

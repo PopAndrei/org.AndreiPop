@@ -6,9 +6,9 @@ import org.junit.Assert;
 
 public class CheckoutSteps {
 
-    HomePage homePage;
-    CheckoutPage checkoutPage;
-    ShopPage shopPage;
+    private HomePage homePage;
+    private CheckoutPage checkoutPage;
+    private ShopPage shopPage;
 
     //*
     //This is the Step for getting to the Checkout Page

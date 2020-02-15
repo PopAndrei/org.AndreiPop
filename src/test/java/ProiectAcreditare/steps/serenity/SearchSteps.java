@@ -9,9 +9,9 @@ import org.junit.Assert;
 
 public class SearchSteps {
 
-    HomePage homePage;
-    ShopPage shopPage;
-    ProductPage productPage;
+    private HomePage homePage;
+    private ShopPage shopPage;
+    private ProductPage productPage;
 
     @Step
     public void navigateToHomePage(){

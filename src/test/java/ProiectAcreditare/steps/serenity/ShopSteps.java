@@ -5,6 +5,7 @@ import ProiectAcreditare.pages.LoginPage;
 import ProiectAcreditare.pages.ShopPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
+import org.junit.Assert;
 
 public class ShopSteps {
 
@@ -98,5 +99,25 @@ public class ShopSteps {
         shopPage.clickProduct28AddToCartButton();
         shopPage.clickProduct28ViewCartButton();
     }
+
+    //*
+    //These are the Steps for the "Sort By Price: Low to High" Tests
+    //*
+
+    @Step
+    public void clickOnSortDropdown(){
+        shopPage.clickOnSortDropdown();
+    }
+
+    @Step
+    public void selectSortProductByPriceLow2High(){
+        shopPage.selectSortByPriceLowToHigh();
+    }
+
+    @Step
+    public void checkPricesOrderedLowToHigh(){
+        Assert.assertTrue(shopPage.checkPricesOrderedLowToHigh());
+    }
+
 
 }

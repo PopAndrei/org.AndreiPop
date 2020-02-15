@@ -2,6 +2,7 @@ package ProiectAcreditare.steps.serenity;
 
 import ProiectAcreditare.pages.HomePage;
 import ProiectAcreditare.pages.SearchResultsPage;
+import ProiectAcreditare.pages.ShopPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
@@ -11,6 +12,11 @@ public class SortProductsSteps {
     //*
     //These are the methods and exercises from class
     //******************************************************************************************************
+
+    private HomePage homePage;
+    private ShopPage shopPage;
+
+
 //
 //    private HomePage homePage;
 //    private SearchResultsPage searchResultsPage;
