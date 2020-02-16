@@ -109,8 +109,7 @@ public class ShopPage extends PageObject {
     }
 
     public String getProduct28Name(){
-        String prod28Name = product28Name.getText();
-        return prod28Name;
+        return product28Name.getText();
     }
 
 

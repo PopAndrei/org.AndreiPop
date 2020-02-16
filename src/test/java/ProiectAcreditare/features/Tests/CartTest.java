@@ -71,7 +71,8 @@ public class CartTest {
     }
 
     //*
-    // These are the tests for Removing Products from cart
+    // These are the tests for Removing Products from cart -
+    // Note that the cart must be empty before launching test!!!
     //*
 
 
