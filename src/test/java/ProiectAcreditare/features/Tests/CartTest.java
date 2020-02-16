@@ -23,13 +23,13 @@ public class CartTest {
     }
 
     @Steps
-    LogInSteps logInSteps;
+    private LogInSteps logInSteps;
 
     @Steps
-    ShopSteps shopSteps;
+    private ShopSteps shopSteps;
 
     @Steps
-    CartSteps cartSteps;
+    private CartSteps cartSteps;
 
     private String email = "stan_frostmorn@yahoo.com";
     private String pass = "fasttracki";

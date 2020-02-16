@@ -3,12 +3,16 @@ package ProiectAcreditare.steps.serenity;
 import ProiectAcreditare.pages.*;
 import net.thucydides.core.annotations.Step;
 import org.junit.Assert;
+import org.junit.Assume;
+
+import java.util.concurrent.ConcurrentNavigableMap;
 
 public class CheckoutSteps {
 
     private HomePage homePage;
     private CheckoutPage checkoutPage;
     private ShopPage shopPage;
+    private CartPage cartPage;
 
     //*
     //This is the Step for getting to the Checkout Page
@@ -101,13 +105,23 @@ public class CheckoutSteps {
         checkoutPage.fillPhoneField("0751193900");
         checkoutPage.fillEmailField("stan_frostmorn@yahoo.com");
 
-
-
-
-
-
     }
 
+
+    //*
+    //These are the steps for checking total sum of the orders
+    //*
+
+    @Step
+    public void checkTotalAndProceedToCheckout(String totalFromCart){
+        Assert.assertTrue(checkoutPage.compareCartTotal2OrderTotal(totalFromCart));
+        cartPage.clickOnProceedToCheckoutButton();
+    }
+
+    @Step
+    public void checkPlacedOrderTotal(String totalFromCart){
+        Assert.assertTrue(checkoutPage.compareOrderTotal2OrderReceived(totalFromCart));
+    }
 
 
 }

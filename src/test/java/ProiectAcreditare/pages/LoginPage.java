@@ -28,6 +28,9 @@ public class LoginPage extends PageObject {
     @FindBy (css = "#post-7 li a")
     private WebElementFacade lostPasswordError;
 
+    @FindBy(css = "#post-7 .post-title")
+    private WebElementFacade myAccountTitle;
+
     //*
     //These are the methods for/interactions with the "Login" section:
     //*
@@ -42,6 +45,15 @@ public class LoginPage extends PageObject {
 
     public void clickLoginButton (){
         clickOn(loginButton);
+    }
+
+
+    //*
+    //These are the methods for/interactions with the "Login" section:
+    //*
+
+    public boolean checkMyAccountTitleIsVisible(){
+        return myAccountTitle.isCurrentlyVisible();
     }
 
 

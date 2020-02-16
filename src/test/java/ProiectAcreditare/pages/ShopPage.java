@@ -54,6 +54,9 @@ public class ShopPage extends PageObject {
     @FindBy(css = ".price .amount")
     private List<WebElementFacade> listOfPrices;
 
+    @FindBy(css = "#title_bread_wrap .entry-title")
+    private WebElementFacade shopPageTitle;
+
 
     //*
     //These are the methods/interactions with the elements from the Shop Page
@@ -94,6 +97,8 @@ public class ShopPage extends PageObject {
     public void selectSortByPriceLowToHigh(){
         clickOn(sortByPriceLowToHighOption);
     }
+
+    public boolean checkShopTitleIsVisible(){return shopPageTitle.isCurrentlyVisible();}
 
     //*
     //These are the method for getting the text out of the WebElement - been trying to find a way to make them work

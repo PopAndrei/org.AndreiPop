@@ -21,13 +21,13 @@ public class ProductPageTest {
     }
 
     @Steps
-    LogInSteps logInSteps;
+    private LogInSteps logInSteps;
 
     @Steps
-    ShopSteps shopSteps;
+    private ShopSteps shopSteps;
 
     @Steps
-    ProductSteps productSteps;
+    private ProductSteps productSteps;
 
     @Test
     public void openProductPageTest(){

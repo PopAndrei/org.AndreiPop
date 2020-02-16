@@ -4,6 +4,7 @@ import ProiectAcreditare.pages.CartPage;
 import ProiectAcreditare.pages.HomePage;
 import ProiectAcreditare.pages.ShopPage;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
 public class CartSteps {
@@ -33,9 +34,40 @@ public class CartSteps {
         Assert.assertTrue(cartPage.verifyProduct28NameFromCart(productName));
     }
 
+    @Step
+    public void verifyTotalSumFromCart(String prod28QTY, String prod27QTY){
+        Assert.assertTrue(cartPage.checkTotalSum(prod28QTY,prod27QTY));
+    }
+
+    @Step
+    public String getTotalSumPriceFromCart(){
+        return cartPage.getTotalPriceFromCart();
+    }
+
+
 
     //*
-    //These are the removing products methods
+    //These are the Steps for changing the quantity of the products in the cart
+    //*
+
+    @Step
+    public void setProd28Quantity(String newQuantity){
+        cartPage.setProd28Quantity(newQuantity);
+    }
+
+    @Step
+    public void setProd27Quantity(String newQuantity){
+        cartPage.setProd27Quantity(newQuantity);
+    }
+
+    @Step
+    public void clickOnUpdateCartButton(){
+        cartPage.clickOnUpdateCartButton();
+    }
+
+
+    //*
+    //These are the removing products Steps
     //*
 
     @Step
@@ -51,7 +83,7 @@ public class CartSteps {
 
 
     //*
-    //These are the Verifying / Asserting methods
+    //These are the Verifying / Asserting methods for the Empty Cart
     //*
 
     @Step

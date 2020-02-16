@@ -1,8 +1,7 @@
 package ProiectAcreditare.features.Tests;
 
-import ProiectAcreditare.steps.serenity.CheckoutSteps;
-import ProiectAcreditare.steps.serenity.LogInSteps;
-import ProiectAcreditare.steps.serenity.ShopSteps;
+import ProiectAcreditare.pages.HomePage;
+import ProiectAcreditare.steps.serenity.*;
 import com.google.inject.internal.cglib.core.$WeakCacheKey;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
@@ -26,13 +25,19 @@ public class CheckoutTest {
     }
 
     @Steps
-    LogInSteps logInSteps;
+    private LogInSteps logInSteps;
 
     @Steps
-    ShopSteps shopSteps;
+    private ShopSteps shopSteps;
 
     @Steps
-    CheckoutSteps checkoutSteps;
+    private NavigationSteps navigationSteps;
+
+    @Steps
+    private CartSteps cartSteps;
+
+    @Steps
+    private CheckoutSteps checkoutSteps;
 
     private String email = "stan_frostmorn@yahoo.com";
     private String pass = "fasttracki";
@@ -44,6 +49,9 @@ public class CheckoutTest {
     private String city = "Cluj-Napoca";
     private String zipcode = "400398";
     private String phoneNumber = "0751193900";
+
+    private String qty1 = "3";
+    private String qty2 = "4";
 
     @Test
     public void simpleCheckoutTest(){
@@ -77,4 +85,23 @@ public class CheckoutTest {
         checkoutSteps.compareAddedToPlacedOrderProduct(prod28Name);
 
     }
+
+    @Test
+    public void verifyTotalSumAtCheckoutTest(){
+        navigationSteps.navigateToHomepage();
+        logInSteps.login(email,pass);
+        shopSteps.addTwoProductsToCart();
+        navigationSteps.clickOnCartMenuButton();
+        cartSteps.setProd28Quantity(qty1);
+        cartSteps.setProd27Quantity(qty2);
+        cartSteps.clickOnUpdateCartButton();
+        cartSteps.verifyTotalSumFromCart(qty1,qty2);
+        String cartTotal = cartSteps.getTotalSumPriceFromCart();
+        checkoutSteps.checkTotalAndProceedToCheckout(cartTotal);
+        checkoutSteps.checkPlacedOrderTotal(cartTotal);
+        logInSteps.clickLogOutButton();
+
+    }
+
+
 }

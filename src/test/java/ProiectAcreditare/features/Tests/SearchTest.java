@@ -1,6 +1,7 @@
 package ProiectAcreditare.features.Tests;
 
 import ProiectAcreditare.steps.serenity.LogInSteps;
+import ProiectAcreditare.steps.serenity.NavigationSteps;
 import ProiectAcreditare.steps.serenity.SearchSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
@@ -20,15 +21,15 @@ public class SearchTest {
     }
 
     @Steps
-    LogInSteps logInSteps;
+    private NavigationSteps navigationSteps;
 
     @Steps
-    SearchSteps searchSteps;
+    private SearchSteps searchSteps;
 
 
     @Test
     public void searchTest(){
-        logInSteps.navigateToHomepage();
+        navigationSteps.navigateToHomepage();
         String searchedText = "Belt";
         searchSteps.insertSearchText(searchedText);
         searchSteps.clickSearchButton();

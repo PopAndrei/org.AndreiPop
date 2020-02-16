@@ -1,8 +1,6 @@
 package ProiectAcreditare.features.Tests;
 
-import ProiectAcreditare.pages.HomePage;
-import ProiectAcreditare.steps.serenity.HomepageSteps;
-import ProiectAcreditare.steps.serenity.LogInSteps;
+import ProiectAcreditare.steps.serenity.NavigationSteps;
 import ProiectAcreditare.steps.serenity.ShopSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
@@ -24,16 +22,16 @@ public class SortProductsTest {
     }
 
     @Steps
-    HomepageSteps homepageSteps;
+    private NavigationSteps navigationSteps;
 
     @Steps
-    ShopSteps shopSteps;
+    private ShopSteps shopSteps;
 
 
     @Test
     public void sortProductsByPriceLow2HighTest(){
-        homepageSteps.navigateToHomepage();
-        homepageSteps.clickOnShopMenuButton();
+        navigationSteps.navigateToHomepage();
+        navigationSteps.clickOnShopMenuButton();
         shopSteps.clickOnSortDropdown();
         shopSteps.selectSortProductByPriceLow2High();
         shopSteps.checkPricesOrderedLowToHigh();

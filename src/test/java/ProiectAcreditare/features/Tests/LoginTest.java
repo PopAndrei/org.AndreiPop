@@ -23,12 +23,20 @@ public class LoginTest {
     @Steps
     private LogInSteps logInSteps;
 
+    private String email = "stan_frostmorn@yahoo.com";
+    private String pass = "fasttracki";
+
+
+//    @Test
+//    public void registerTest(){
+//
+//    }
 
     @Test
     public void validLoginTest(){
         logInSteps.navigateToHomepage();
         logInSteps.goToLogin();
-        logInSteps.enterCredentials("stan_frostmorn@yahoo.com","fasttracki");
+        logInSteps.enterCredentials(email,pass);
         logInSteps.clickLoginButton();
         logInSteps.checkLoggedIn("stan_frostmorn");
     }
@@ -38,7 +46,7 @@ public class LoginTest {
     public void invalidLoginTest(){
         logInSteps.navigateToHomepage();
         logInSteps.goToLogin();
-        logInSteps.enterInvalidCredentials("stan_frostmorn@yahoo.com", "FASTTRACKI");
+        logInSteps.enterInvalidCredentials(email,pass);
         logInSteps.clickLoginButton();
         logInSteps.checkIfErrorMessageVisible();
         logInSteps.checkLostYourPasswordQuestion("Lost your password?");
@@ -48,7 +56,7 @@ public class LoginTest {
     @Test
     public void logOutTest(){
         logInSteps.navigateToHomepage();
-        logInSteps.login("stan_frostmorn@yahoo.com","fasttracki");
+        logInSteps.login(email,pass);
         logInSteps.clickLogOutButton();
         logInSteps.checkDashBoardMessage("Hello world!");
 

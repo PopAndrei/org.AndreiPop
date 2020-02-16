@@ -47,6 +47,9 @@ public class CheckoutPage extends PageObject {
     @FindBy(id = "billing_email")
     private WebElementFacade emailField;
 
+    @FindBy (css = ".order-total .amount")
+    private WebElementFacade orderTotalFromCheckoutPage;
+
     //*
     //These are the elements that are present AFTER the Placing of the Order on the CheckoutPage;
     //*
@@ -59,6 +62,9 @@ public class CheckoutPage extends PageObject {
 
     @FindBy(css = ".woocommerce-notice.woocommerce-thankyou-order-received")
     private WebElementFacade thankYouMessage;
+
+    @FindBy(css = "#order_review > table > tfoot > tr.order-total > td > strong > span")
+    private WebElementFacade orderReceivedTotal;
 
 
     //*
@@ -127,6 +133,38 @@ public class CheckoutPage extends PageObject {
         return thankYouMessage.containsOnlyText(thankYouText);
     }
 
+    public boolean compareCartTotal2OrderTotal(String totalFromCart){
+        String textTotalFromCart = totalFromCart.replace("lei","").replace(".00","").trim();
+        int intTotalFromCart = Integer.parseInt(textTotalFromCart);
+
+        String textOrderTotalFromCheckoutPage = orderTotalFromCheckoutPage.getText()
+                .replace("lei","")
+                .replace(".00","")
+                .trim();
+        int intOrderTotalFromCheckout = Integer.parseInt(textOrderTotalFromCheckoutPage);
+
+        if(intTotalFromCart == intOrderTotalFromCheckout){
+            return true;
+        }
+        else return false;
+    }
+
+
+    public boolean compareOrderTotal2OrderReceived(String totalFromCart){
+        String textTotalFromCart = totalFromCart.replace("lei","").replace(".00","").trim();
+        int intTotalFromCart = Integer.parseInt(textTotalFromCart);
+
+        String textOrderReceivedTotal = orderReceivedTotal.getText()
+                .replace("lei","")
+                .replace(".00","")
+                .trim();
+        int intOrderReceivedTotal = Integer.parseInt(textOrderReceivedTotal);
+
+        if(intOrderReceivedTotal == intTotalFromCart){
+            return true;
+        }
+        else return false;
+    }
 
 
     //*

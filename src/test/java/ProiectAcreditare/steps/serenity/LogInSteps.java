@@ -93,13 +93,10 @@ public class LogInSteps {
     }
 
     //*
-    //These are other Steps
+    //These are
     //*
 
-    @Step
-    public void clickLogo(){
-        homePage.clickLogo();
-    }
+
 
 
 }
