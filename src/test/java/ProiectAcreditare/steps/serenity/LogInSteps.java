@@ -3,6 +3,7 @@ package ProiectAcreditare.steps.serenity;
 import ProiectAcreditare.pages.DashboardTabPage;
 import ProiectAcreditare.pages.HomePage;
 import ProiectAcreditare.pages.LoginPage;
+import ProiectAcreditare.pages.RegisterPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
@@ -12,6 +13,7 @@ public class LogInSteps {
     private HomePage homePage;
     private LoginPage loginPage;
     private DashboardTabPage dashboardTabPage;
+    private RegisterPage registerPage;
 
 
     //*
@@ -93,8 +95,34 @@ public class LogInSteps {
     }
 
     //*
-    //These are
+    //These are the Steps for the REGISTER TEST
     //*
+
+    @Step
+    public String generateRandomEmail(){
+        return registerPage.generateRandomEmail();
+    }
+
+    @Step
+    public void inputRegisterEmail(String registerEmail){
+        registerPage.inputRegisterEmail(registerEmail);
+    }
+
+    @Step
+    public void inputRegisterPassword(){
+        registerPage.inputRegisterPassword("fasttracki");
+    }
+
+    @Step
+    public void clickOnRegisterButton(){
+        registerPage.clickOnRegisterButton();
+    }
+
+    @Step
+    public String getNameToCheck(String generatedEmail){
+        return registerPage.getNameToCheck(generatedEmail);
+    }
+
 
 
 

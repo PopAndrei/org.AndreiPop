@@ -1,8 +1,10 @@
 package ProiectAcreditare.features.Tests;
 
 import ProiectAcreditare.steps.serenity.LogInSteps;
+import ProiectAcreditare.steps.serenity.NavigationSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,14 +25,24 @@ public class LoginTest {
     @Steps
     private LogInSteps logInSteps;
 
+    @Steps
+    private NavigationSteps navigationSteps;
+
     private String email = "stan_frostmorn@yahoo.com";
     private String pass = "fasttracki";
 
 
-//    @Test
-//    public void registerTest(){
-//
-//    }
+    @Test
+    public void registerTest(){
+        navigationSteps.navigateToHomepage();
+        navigationSteps.clickOnMyAccountMenuButton();
+        String randomlyGeneratedEmail = logInSteps.generateRandomEmail();
+        logInSteps.inputRegisterEmail(randomlyGeneratedEmail);
+        logInSteps.inputRegisterPassword();
+        logInSteps.clickOnRegisterButton();
+        String nameOfRegisteredEmail = logInSteps.getNameToCheck(randomlyGeneratedEmail);
+        logInSteps.checkLoggedIn(nameOfRegisteredEmail);
+    }
 
     @Test
     public void validLoginTest(){
