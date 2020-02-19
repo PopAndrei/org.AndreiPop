@@ -36,7 +36,7 @@ public class LoginTest {
     public void registerTest(){
         navigationSteps.navigateToHomepage();
         navigationSteps.clickOnMyAccountMenuButton();
-        String randomlyGeneratedEmail = logInSteps.generateRandomEmail();
+        String randomlyGeneratedEmail = logInSteps.generateRandomValidEmail();
         logInSteps.inputRegisterEmail(randomlyGeneratedEmail);
         logInSteps.inputRegisterPassword();
         logInSteps.clickOnRegisterButton();

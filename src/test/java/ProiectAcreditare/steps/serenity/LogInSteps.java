@@ -99,8 +99,8 @@ public class LogInSteps {
     //*
 
     @Step
-    public String generateRandomEmail(){
-        return registerPage.generateRandomEmail();
+    public String generateRandomValidEmail(){
+        return registerPage.getRandomValidEmail();
     }
 
     @Step

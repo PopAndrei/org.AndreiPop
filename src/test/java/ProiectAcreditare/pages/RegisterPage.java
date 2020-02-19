@@ -57,13 +57,40 @@ public class RegisterPage extends PageObject {
 
     public String generateRandomEmail(){
 
-        byte[] array = new byte[8];
+        int n = 16;
+        byte[] array = new byte[n];
         new Random().nextBytes(array);
 
-        String firstPartOfEmail = new String(array, Charset.forName("Unicode"));
+        //I wanted to try something with a for loop here, but I got another idea in the process --
+//        for(int i = 0; i <= n; i++){
+//            if(array[i] != )
+//        }
+
+        String firstPartOfEmail = new String(array, Charset.defaultCharset());
         String randomEmail = firstPartOfEmail + "@fasttrackit.org";
 
         return randomEmail;
+    }
+
+    //*
+    //This is the NEW method to generate a more reliable random email
+    //*
+
+    //I got the idea to create a more reliable random email method, but with a controlled pool of char to select from -
+    // this will lead to a more normal looking email address.
+
+    public String getRandomValidEmail() {
+        String charContainer = "A1aB2bC3cD4dE5eF6G7H8I9J1K2L3M4N5O6P7Q8R9STUVWXYZabcdefghijlmnopqrstuvwxyz1234567890abcdefghijlmnopqrstuvwxyz1234567890";
+        StringBuilder emailName = new StringBuilder();
+        Random randomChar = new Random();
+            while (emailName.length() < 12) {
+                int position = (randomChar.nextInt(10) * emailName.length());
+                emailName.append(charContainer.charAt(position));
+            }
+        String newEmail = emailName.toString();
+        //System.out.println(newEmail + "@fasttrackit.org");
+        return newEmail+"@fasttrackit.org";
+
     }
 
 }
